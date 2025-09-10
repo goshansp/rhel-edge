@@ -1,3 +1,3 @@
-FROM registry.redhat.io/rhel10/rhel-bootc:latest
+FROM registry.redhat.io/rhel9/rhel-bootc:latest
 
-RUN dnf -y install python && dnf clean all
+RUN dnf -y install microshift python && dnf clean all
