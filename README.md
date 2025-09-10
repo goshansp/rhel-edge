@@ -5,19 +5,46 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 1. Create image
 1. Add Microshift
 1. Push to Quay
-1. Build on Quay
-1. Create molecule scenario rhel-edge?
+1. Run vm on KVM
+1. (Build on Quay)
+1. Create molecule scenario rhel-edge? ansible_role_template
+
+
+# WIP: Create QCOW2 Image and boot the machine
+```
+podman create --name temp-container quay.io/rh_ee_hgosteli/rhel-edge:latest
+podman export temp-container -o microshift-root.tar
+qemu-img create -f qcow2 microshift.qcow2 20G
+
+... put the stuff in ...
+
+#!/bin/bash
+virt-install \
+  --memory 16000 \
+  --vcpus 4 \
+  --name microshift-vm \
+  --disk ~/git/goshansp/rhel-edge/microshift.qcow2,device=disk,bus=virtio,format=qcow2 \
+  --os-variant rhel9-unknown \
+  --virt-type kvm \
+  --graphics none \
+  --console pty,target_type=serial \
+  --import \
+  --connect qemu:///session \
+  --network bridge=virbr0,model=virtio \
+  --noautoconsole
+
+
+
+
+```
 
 
 # Creating RHEL Edge Image (On RHEL9)
-https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/building-and-testing-rhel-bootc-images
 ```
 $ sudo dnf install podman
 # https://access.redhat.com/terms-based-registry/ ... get the token.
 $ mkdir ~/.config/; mkdir ~/.config/containers; vi ~/.config/containers/auth.json
 $ podman login registry.redhat.io
-
-$ podman build -t quay.io/rh_ee_hgosteli/rhel-edge:latest .
 
 $ podman build \
   --volume /etc/yum.repos.d:/etc/yum.repos.d:ro \
@@ -25,7 +52,7 @@ $ podman build \
   --volume /etc/rhsm:/etc/rhsm:ro \
   -t quay.io/rh_ee_hgosteli/rhel-edge:latest .
 
-
+$ podman login quay.io
+# rh_ee_hgosteli
 $ podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
-
 ```
