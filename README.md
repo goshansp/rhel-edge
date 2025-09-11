@@ -13,6 +13,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 # WIP: Step 2:Create QCOW2 Image from Container
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder_using-image-mode-for-rhel-to-build-deploy-and-manage-operating-systems
 ```
+$ ssh rhel9
 $ sudo podman login registry.redhat.io
 $ mkdir output
 $ sudo podman run \
@@ -28,6 +29,8 @@ $ sudo podman run \
     --type qcow2 \
     --config /config.toml \
   quay.io/rh_ee_hgosteli/rhel-edge:latest
+$ scp rhel9:./output/qcow2/disk.qcow2 .
+
 
 ... WIP ...
 
@@ -36,7 +39,7 @@ virt-install \
   --memory 16000 \
   --vcpus 4 \
   --name microshift-vm \
-  --disk ~/git/goshansp/rhel-edge/microshift.qcow2,device=disk,bus=virtio,format=qcow2 \
+  --disk ./disk.qcow2,device=disk,bus=virtio,format=qcow2 \
   --os-variant rhel9-unknown \
   --virt-type kvm \
   --graphics none \
