@@ -1,0 +1,5 @@
+[[customizations.user]]
+name = "hp"
+# password = "pass"
+key = "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEYWbHj1jB5tIlEevA9SgLVdtPsvkQbV+zAiuA4Dnsr3vFDW04bPLtayKfq9ltEqMvNV9O22vLzYnSaQ7PEKTXE= hp@t14s.pamperspoil.com"
+groups = ["wheel", "sudo"]
