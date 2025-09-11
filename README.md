@@ -10,13 +10,27 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 1. Create molecule scenario rhel-edge? ansible_role_template
 
 
-# WIP: Create QCOW2 Image and boot the machine
+# WIP: Step 2:Create QCOW2 Image from Container
+https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder_using-image-mode-for-rhel-to-build-deploy-and-manage-operating-systems
 ```
-podman create --name temp-container quay.io/rh_ee_hgosteli/rhel-edge:latest
-podman export temp-container -o microshift-root.tar
-qemu-img create -f qcow2 microshift.qcow2 20G
+$ sudo podman login registry.redhat.io
+$ sudo podman pull registry.redhat.io/rhel9/bootc-image-builder
+$ sudo podman run \
+    --rm \
+    -it \
+    --privileged \
+    --pull=newer \
+    --security-opt label=type:unconfined_t \
+    -v ./config.toml:/config.toml \
+    -v ./config.toml:/config.toml:ro \
+    -v ./output:/output \
+    -v /var/lib/containers/storage:/var/lib/containers/storage \
+    registry.redhat.io/rhel10/bootc-image-builder:latest \
+    --type qcow2 \
+    --config /config.toml \
+  quay.io/rh_ee_hgosteli/rhel-edge:latest
 
-... put the stuff in ...
+... WIP ...
 
 #!/bin/bash
 virt-install \
@@ -32,14 +46,10 @@ virt-install \
   --connect qemu:///session \
   --network bridge=virbr0,model=virtio \
   --noautoconsole
-
-
-
-
 ```
 
 
-# Creating RHEL Edge Image (On RHEL9)
+# Step 1: Creating Bootc RHEL Edge Image (On RHEL9)
 ```
 $ sudo dnf install podman
 # https://access.redhat.com/terms-based-registry/ ... get the token.
