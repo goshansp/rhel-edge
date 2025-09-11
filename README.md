@@ -14,14 +14,13 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder_using-image-mode-for-rhel-to-build-deploy-and-manage-operating-systems
 ```
 $ sudo podman login registry.redhat.io
-$ sudo podman pull registry.redhat.io/rhel9/bootc-image-builder
+$ mkdir output
 $ sudo podman run \
     --rm \
     -it \
     --privileged \
     --pull=newer \
     --security-opt label=type:unconfined_t \
-    -v ./config.toml:/config.toml \
     -v ./config.toml:/config.toml:ro \
     -v ./output:/output \
     -v /var/lib/containers/storage:/var/lib/containers/storage \
