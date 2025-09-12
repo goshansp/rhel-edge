@@ -3,6 +3,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # Next
+1. Sudo Privileges
 1. (Build on Quay)
 1. Meet Microshift Requirements (LVM,... infrastructure.git/scripts/microsdhift.md)
 1. Create molecule scenario rhel-edge? ansible_role_template
@@ -16,6 +17,8 @@ $ sudo subscription-manager register --username rh-ee-hgosteli
 $ sudo subscription-manager repos --enable rhocp-4.19-for-rhel-9-$(uname -m)-rpms --enable fast-datapath-for-rhel-9-$(uname -m)-rpms
 $ sudo mkdir /root/.config/; sudo mkdir /root/.config/containers; sudo vi /root/.config/containers/auth.json
 $ sudo podman login registry.redhat.io
+$ sudo podman login quay.io
+# rh_ee_hgosteli
 $ mkdir output
 $ sudo podman pull quay.io/rh_ee_hgosteli/rhel-edge:latest
 $ sudo podman run \
@@ -54,3 +57,5 @@ $ sudo podman login quay.io
 # rh_ee_hgosteli
 $ sudo podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
 ```
+
+ADR: Cannot inject subs easily on Quay, hence we build on an x86 and push to Quay.
