@@ -3,10 +3,13 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # Next
-1. Sudo Privileges
-1. (Build on Quay)
 1. Meet Microshift Requirements (LVM,... infrastructure.git/scripts/microsdhift.md)
+1. Deploy to production box
 1. Create molecule scenario rhel-edge? ansible_role_template
+
+
+# Kown Limitations
+- only one ssh key - move to sysusers if more needed
 
 
 # WIP: Step 2:Create QCOW2 Image from Container
