@@ -4,7 +4,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 # Next
 1. (Build on Quay)
-1. Meet Microshift Requirements (LVM,...)
+1. Meet Microshift Requirements (LVM,... infrastructure.git/scripts/microsdhift.md)
 1. Create molecule scenario rhel-edge? ansible_role_template
 
 
@@ -12,6 +12,8 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder_using-image-mode-for-rhel-to-build-deploy-and-manage-operating-systems
 ```
 $ ssh rhel9
+$ sudo subscription-manager register --username rh-ee-hgosteli
+$ sudo subscription-manager repos --enable rhocp-4.19-for-rhel-9-$(uname -m)-rpms --enable fast-datapath-for-rhel-9-$(uname -m)-rpms
 $ sudo mkdir /root/.config/; sudo mkdir /root/.config/containers; sudo vi /root/.config/containers/auth.json
 $ sudo podman login registry.redhat.io
 $ mkdir output
@@ -42,13 +44,13 @@ $ sudo dnf install podman
 $ mkdir ~/.config/; mkdir ~/.config/containers; vi ~/.config/containers/auth.json
 $ podman login registry.redhat.io
 
-$ podman build \
-  --volume /etc/yum.repos.d:/etc/yum.repos.d:ro \
-  --volume /etc/pki/entitlement:/etc/pki/entitlement:ro \
-  --volume /etc/rhsm:/etc/rhsm:ro \
+$ sudo podman build \
+  --volume /etc/yum.repos.d:/etc/yum.repos.d:z \
+  --volume /etc/pki/entitlement:/etc/pki/entitlement:z \
+  --volume /etc/rhsm:/etc/rhsm:z \
   -t quay.io/rh_ee_hgosteli/rhel-edge:latest .
 
-$ podman login quay.io
+$ sudo podman login quay.io
 # rh_ee_hgosteli
-$ podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
+$ sudo podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
 ```
