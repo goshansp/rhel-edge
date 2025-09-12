@@ -11,8 +11,10 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder_using-image-mode-for-rhel-to-build-deploy-and-manage-operating-systems
 ```
 $ ssh rhel9
+$ sudo mkdir /root/.config/; sudo mkdir /root/.config/containers; sudo vi /root/.config/containers/auth.json
 $ sudo podman login registry.redhat.io
 $ mkdir output
+$ sudo podman pull quay.io/rh_ee_hgosteli/rhel-edge:latest
 $ sudo podman run \
     --rm \
     -it \
@@ -28,30 +30,14 @@ $ sudo podman run \
   quay.io/rh_ee_hgosteli/rhel-edge:latest
 $ scp rhel9:./output/qcow2/disk.qcow2 .
 
-
-... WIP ...
-
-#!/bin/bash
-virt-install \
-  --memory 16000 \
-  --vcpus 4 \
-  --name microshift-vm \
-  --disk ./disk.qcow2,device=disk,bus=virtio,format=qcow2 \
-  --os-variant rhel9-unknown \
-  --virt-type kvm \
-  --graphics none \
-  --console pty,target_type=serial \
-  --import \
-  --connect qemu:///session \
-  --network bridge=virbr0,model=virtio \
-  --noautoconsole
+./fire_vm.sh
 ```
 
 
 # Step 1: Creating Bootc RHEL Edge Image (On RHEL9)
 ```
 $ sudo dnf install podman
-# https://access.redhat.com/terms-based-registry/ ... get the token.
+# https://access.redhat.com/terms-based-registry/token/hgosteli/docker-config ... auth.json
 $ mkdir ~/.config/; mkdir ~/.config/containers; vi ~/.config/containers/auth.json
 $ podman login registry.redhat.io
 
