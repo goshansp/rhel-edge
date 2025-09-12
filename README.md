@@ -4,6 +4,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 # Next
 1. (Build on Quay)
+1. Meet Microshift Requirements (LVM,...)
 1. Create molecule scenario rhel-edge? ansible_role_template
 
 
