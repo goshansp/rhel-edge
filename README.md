@@ -3,16 +3,22 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # Next
+1. Deploy to Hardware
 1. Meet Microshift Requirements (LVM,... infrastructure.git/scripts/microsdhift.md)
 1. Deploy to production box
 1. Create molecule scenario rhel-edge? ansible_role_template
 
 
-# Kown Limitations
+# Step 3: Deploy to Hardware
+1. USB Coreos installer
+1. ???
+1. Profit!
+
+# Known Limitations
 - only one ssh key - move to sysusers if more needed
 
 
-# WIP: Step 2:Create QCOW2 Image from Container
+# Step 2:Create QCOW2 Image from Container
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder_using-image-mode-for-rhel-to-build-deploy-and-manage-operating-systems
 ```
 $ ssh rhel9
@@ -61,4 +67,9 @@ $ sudo podman login quay.io
 $ sudo podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
 ```
 
-ADR: Cannot inject subs easily on Quay, hence we build on an x86 and push to Quay.
+# ADR
+## Rebase Ostree-Container
+Ostree Commit and Containers seem not to allow for upgrade path as of 12.09.2025 - hence we redeploy.
+
+## Build Env
+Cannot inject subs easily on Quay, hence we build on an x86 and push to Quay.
