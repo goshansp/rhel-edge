@@ -3,13 +3,12 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # Next
-1. Deploy lvm
+1. Create Molecule Driver for Ansible (ansible_role_template)
 1. .kube/config
 1. pull-secret (TBD Ansible?)
 1. Start Microshift (infrastructure.git/scripts/microsdhift.md)
 1. OpenScap CIS Level 2
 1. Deploy to Metal
-1. Create molecule scenario rhel-edge? ansible_role_template
 
 
 # Step 2b: Create .raw.xz Image Deploy to Metal
