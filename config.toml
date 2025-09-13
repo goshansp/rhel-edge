@@ -15,6 +15,7 @@ data = """
 hp ALL=(ALL) NOPASSWD: ALL
 """
 
+# TODO: This is not working - microshift service not enabled
 [customizations.services]
 enabled = ["microshift"]
 
@@ -23,6 +24,7 @@ type = "lvm"
 name = "mainvg"
 minsize = "20 GiB"
 
+# TODO: Validate
 [customizations.openscap]
 datastream = "/usr/share/xml/scap/ssg/content/ssg-rhel9-ds.xml"
 profile_id = "xccdf_org.ssgproject.content_profile_cis"

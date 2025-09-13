@@ -3,22 +3,44 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # Next
-1. Deploy to Hardware
-1. Meet Microshift Requirements (LVM,... infrastructure.git/scripts/microsdhift.md)
-1. Deploy to production box
+1. Deploy lvm
+1. .kube/config
+1. pull-secret (TBD Ansible?)
+1. Start Microshift (infrastructure.git/scripts/microsdhift.md)
+1. OpenScap CIS Level 2
+1. Deploy to Metal
 1. Create molecule scenario rhel-edge? ansible_role_template
 
 
-# Step 3: Deploy to Hardware
-1. USB Coreos installer
-1. ???
+# Step 2b: Create .raw.xz Image Deploy to Metal
+1. Boot USB Coreos installer
+1. Where to pull .raw.xz image from? -> python http ...
+```
+$ sudo podman run \
+    --rm \
+    -it \
+    --privileged \
+    --pull=newer \
+    --security-opt label=type:unconfined_t \
+    -v ./config.toml:/config.toml:ro \
+    -v ./output:/output \
+    -v /var/lib/containers/storage:/var/lib/containers/storage \
+    registry.redhat.io/rhel10/bootc-image-builder:latest \
+    --type raw \
+    --config /config.toml \
+  quay.io/rh_ee_hgosteli/rhel-edge:latest
+$ xz -T0 -9 -k output/image/disk.raw
+$ scp rhel9:./output/image/disk.raw.xz .
+
+```
 1. Profit!
+
 
 # Known Limitations
 - only one ssh key - move to sysusers if more needed
 
 
-# Step 2:Create QCOW2 Image from Container
+# Step 2a: Build Image as .qcow2 and Boot as VM
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder_using-image-mode-for-rhel-to-build-deploy-and-manage-operating-systems
 ```
 $ ssh rhel9
