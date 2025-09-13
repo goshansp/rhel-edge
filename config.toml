@@ -13,3 +13,6 @@ mode = "0440"
 data = """
 hp ALL=(ALL) NOPASSWD: ALL
 """
+
+[customizations.services]
+enabled = ["microshift"]
