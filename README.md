@@ -41,7 +41,7 @@ https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_i
 ```
 $ ssh rhel9
 $ sudo subscription-manager register --username rh-ee-hgosteli
-$ sudo subscription-manager repos --enable rhocp-4.19-for-rhel-9-$(uname -m)-rpms --enable fast-datapath-for-rhel-9-$(uname -m)-rpms
+$ sudo subscription-manager repos --enable rhocp-4.19-for-rhel-9-$(uname -m)-rpms --enable fast-datapath-for-rhel-9-$(uname -m)-rpms --enable gitops-1.16-for-rhel-9-$(uname -m)-rpms
 $ sudo mkdir /root/.config/; sudo mkdir /root/.config/containers; sudo vi /root/.config/containers/auth.json
 $ sudo podman login registry.redhat.io
 $ sudo podman login quay.io
