@@ -3,7 +3,8 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # WIP
-1. Deploy to metal (ansible_role_router.git)
+1. Done: Deploy to metal (ansible_role_router.git)
+1. Create and Publish Update
 
 
 # Known Limitations
