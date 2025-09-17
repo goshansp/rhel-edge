@@ -2,13 +2,8 @@
 How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see infrastructure.git/scripts/README.md) because subscription entitlements needed. At the time of writing there is no GA Microshift for RHEL10.
 
 
-# Next
-1. Done: Molecule Driver (work in ansible_role_router or _microshift?)
-1. .kube/config
-1. pull-secret (TBD Ansible?)
-1. Start Microshift (infrastructure.git/scripts/microsdhift.md)
-1. OpenScap CIS Level 2
-1. Deploy to Metal
+# WIP
+1. Deploy to metal (ansible_role_router.git)
 
 
 # Known Limitations
@@ -31,13 +26,14 @@ $ sudo podman run \
     --type raw \
     --config /config.toml \
   quay.io/rh_ee_hgosteli/rhel-edge:latest
-$ xz -T0 -9 -k output/image/disk.raw
+$ sudo xz -T0 -9 -k output/image/disk.raw
 $ scp rhel9:./output/image/disk.raw.xz .
-
+$ python3 -m http.server 8000
 ```
 1. Boot USB Coreos installer
-1. Where to pull .raw.xz image from? -> python http ... throw it on pxe share
-
+```
+$ sudo coreos-installer install /dev/nvme0n1 --image-url http://green:8000/disk.raw.xz --insecure
+```
 
 # Step 2a: Build Image as .qcow2 and Boot as VM
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder_using-image-mode-for-rhel-to-build-deploy-and-manage-operating-systems
