@@ -4,7 +4,9 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 # WIP
 1. Done: Deploy to metal (ansible_role_router.git)
+1. Fix Greenboot (Disable Microshift because no secrets)
 1. Create and Publish Update
+1. Enlarge Root volume to something beyong 4.7G ... not sure why its a smaller. Remove molecule instructions.
 
 
 # Known Limitations
@@ -13,6 +15,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 # WIP: Upgrade Process
 1. Step 1 from `Initial Image Creation and Deployment Process`
+1. Ensure repo is public (Robot Account on 17.09.2025 was unable to authenticate)
 1. On the target `sudo bootc upgrade`
 
 
@@ -40,7 +43,7 @@ $ python3 -m http.server 8000
 ```
 1. Boot USB Coreos installer
 ```
-$ sudo coreos-installer install /dev/nvme0n1 --image-url http://green:8000/disk.raw.xz --insecure
+$ sudo coreos-installer install /dev/nvme0n1 --image-url http://green:8000/disk.raw.xz --insecure --resize
 ```
 
 ## Step 2a: Build Image as .qcow2 and Boot as VM
