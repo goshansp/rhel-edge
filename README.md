@@ -11,7 +11,14 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 - only one ssh key - move to sysusers if more needed
 
 
-# Step 2b: Create .raw.xz Image Deploy to Metal
+# WIP: Upgrade Process
+1. Step 1 from `Initial Image Creation and Deployment Process`
+1. On the target `sudo bootc upgrade`
+
+
+# Initial Image Creation and Deployment Process
+
+## Step 2b: Create .raw.xz Image Deploy to Metal
 1. Create .raw.xz
 ```
 $ sudo podman run \
@@ -36,7 +43,7 @@ $ python3 -m http.server 8000
 $ sudo coreos-installer install /dev/nvme0n1 --image-url http://green:8000/disk.raw.xz --insecure
 ```
 
-# Step 2a: Build Image as .qcow2 and Boot as VM
+## Step 2a: Build Image as .qcow2 and Boot as VM
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder_using-image-mode-for-rhel-to-build-deploy-and-manage-operating-systems
 ```
 $ ssh rhel9
@@ -67,7 +74,7 @@ $ scp rhel9:./output/qcow2/disk.qcow2 .
 ```
 
 
-# Step 1: Creating Bootc RHEL Edge Image (On RHEL9)
+## Step 1: Creating Bootc RHEL Edge Image (On RHEL9)
 ```
 $ sudo dnf install podman
 # https://access.redhat.com/terms-based-registry/token/hgosteli/docker-config ... auth.json
