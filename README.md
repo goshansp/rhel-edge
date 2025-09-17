@@ -1,9 +1,9 @@
 # Scope
-How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see infrastructure.git/scripts/README.md) because subscription entitlements needed. At the time of writing there is no Microshift for RHEL10.
+How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see infrastructure.git/scripts/README.md) because subscription entitlements needed. At the time of writing there is no GA Microshift for RHEL10.
 
 
 # Next
-1. Create Molecule Driver for Ansible (ansible_role_template)
+1. Done: Molecule Driver (work in ansible_role_router or _microshift?)
 1. .kube/config
 1. pull-secret (TBD Ansible?)
 1. Start Microshift (infrastructure.git/scripts/microsdhift.md)
@@ -11,9 +11,12 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 1. Deploy to Metal
 
 
+# Known Limitations
+- only one ssh key - move to sysusers if more needed
+
+
 # Step 2b: Create .raw.xz Image Deploy to Metal
-1. Boot USB Coreos installer
-1. Where to pull .raw.xz image from? -> python http ...
+1. Create .raw.xz
 ```
 $ sudo podman run \
     --rm \
@@ -32,11 +35,8 @@ $ xz -T0 -9 -k output/image/disk.raw
 $ scp rhel9:./output/image/disk.raw.xz .
 
 ```
-1. Profit!
-
-
-# Known Limitations
-- only one ssh key - move to sysusers if more needed
+1. Boot USB Coreos installer
+1. Where to pull .raw.xz image from? -> python http ... throw it on pxe share
 
 
 # Step 2a: Build Image as .qcow2 and Boot as VM
