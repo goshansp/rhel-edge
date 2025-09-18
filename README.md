@@ -3,6 +3,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # WIP
+1. Enable seconf SSH key via Sysusers.d ... how to integrate / debug?
 1. Done: Deploy to metal (ansible_role_router.git)
 1. Fix Greenboot (Disable Microshift because no secrets)
 1. Create and Publish Update
