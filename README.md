@@ -3,11 +3,11 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # WIP
-1. Enable seconf SSH key via Sysusers.d ... how to integrate / debug?
+1. WIP: Enable seconf SSH key via Sysusers.d ... how to integrate / debug?
+1. Deploy a root user? (console only?)
 1. Done: Deploy to metal (ansible_role_router.git)
-1. Fix Greenboot (Disable Microshift because no secrets)
 1. Create and Publish Update
-1. Enlarge Root volume to something beyong 4.7G ... not sure why its a smaller. Remove molecule instructions.
+1. Host the image raw/qcow2 on a tailscaled/http server (pxe nginx)
 
 
 # Known Limitations
@@ -72,7 +72,7 @@ $ sudo podman run \
     --type qcow2 \
     --config /config.toml \
   quay.io/rh_ee_hgosteli/rhel-edge:latest
-$ scp rhel9:./output/qcow2/disk.qcow2 .
+$ scp rhel9:./rhel-edge/output/qcow2/disk.qcow2 ~/.local/molecule/images/disk.qcow2
 
 ./fire_vm.sh
 ```
