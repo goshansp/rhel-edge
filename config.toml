@@ -1,5 +1,13 @@
 # Reference: https://osbuild.org/docs/user-guide/blueprint-reference/
 
+# [[customizations.user]]
+# name = "develop"
+# description = "Development User"
+# password = "password"
+# groups = ["wheel"]
+# home = "/home/develop"
+# shell = "/bin/bash"
+
 # TODO: No support yet
 # [customizations.services]
 # enabled = ["microshift"]
