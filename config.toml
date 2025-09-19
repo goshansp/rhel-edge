@@ -14,20 +14,25 @@
 
 [[customizations.disk.partitions]]
 type = "lvm"
-name = "mainvg"
-minsize = "60 GiB"
+name = "root-vg"
+minsize = "30 GiB"
 
 [[customizations.disk.partitions.logical_volumes]]
-lv_name = "rootlv"
+lv_name = "root-lv"
 minsize = "30 GiB"
 fs_type = "xfs"
 mountpoint = "/"
 
-[[customizations.disk.partitions.logical_volumes]]
-lv_name = "microshiftlv"
+# [[customizations.disk.partitions.logical_volumes]]
+# lv_name = "microshiftlv"
+# minsize = "30 GiB"
+# fs_type = "xfs"
+# mountpoint = "/var/microshift"
+
+[[customizations.disk.partitions]]
+type = "lvm"
+name = "microshift-vg"
 minsize = "30 GiB"
-fs_type = "xfs"
-mountpoint = "/var/microshift"
 
 # TODO: No support yet
 # [customizations.openscap]
