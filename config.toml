@@ -1,18 +1,5 @@
 # Reference: https://osbuild.org/docs/user-guide/blueprint-reference/
 
-# [[customizations.user]]
-# name = "hp"
-# groups = ["wheel"]
-# key = "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEYWbHj1jB5tIlEevA9SgLVdtPsvkQbV+zAiuA4Dnsr3vFDW04bPLtayKfq9ltEqMvNV9O22vLzYnSaQ7PEKTXE= hp@t14s.pamperspoil.com"
-# key = "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBLOFyezeUT9oLKLG7TMG98hnAqxaWaD0fiDqkZp+EW9vA9laXFeAn6kA6SZ6bfvwOeiitImDURXMxU1V+9XT+hE= hp@green.home"
-
-# [[customizations.files]]
-# path = "/etc/sudoers.d/99-hp"
-# mode = "0440"
-# data = """
-# hp ALL=(ALL) NOPASSWD: ALL
-# """
-
 # TODO: No support yet
 # [customizations.services]
 # enabled = ["microshift"]
