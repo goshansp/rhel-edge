@@ -15,7 +15,9 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # WIP: Upgrade Process
-1. Step 1 from `Initial Image Creation and Deployment Process`
+1. Preliminary: Step 1 from `Initial Image Creation and Deployment Process`
+1. TODO: Base Upgrade on previous image ... How to version?
+1. Push to Quay
 1. Ensure repo is public (Robot Account on 17.09.2025 was unable to authenticate)
 1. On the target `sudo bootc upgrade`
 
@@ -99,6 +101,13 @@ $ sudo podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
 ```
 
 # ADR
+
+## Where to put config? Blueprint vs Image
+Image because blueprint only ships for installation. No Upgrade path.
+
+## No secrets in image
+Nobrainer.
+
 ## Rebase Ostree-Container
 Ostree Commit and Containers seem not to allow for upgrade path as of 12.09.2025 - hence we redeploy.
 
