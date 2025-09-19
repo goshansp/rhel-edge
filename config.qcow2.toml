@@ -17,11 +17,11 @@ minsize = "30 GiB"
 
 [[customizations.disk.partitions]]
 type = "lvm"
-name = "microshift"
+name = "rhel"
 minsize = "30 GiB"
 
+# Dummy Volume to allow build
 [[customizations.disk.partitions.logical_volumes]]
-lv_name = "microshift-lv"
 minsize = "15 GiB"
 fs_type = "xfs"
 mountpoint = "/var/microshift"
