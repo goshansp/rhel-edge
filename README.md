@@ -97,6 +97,10 @@ $ sudo podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
 
 # ADR
 
+## XFS vs. EXT4
+Because happy path and scalability. Can not be shrinked.
+
+
 ## Where to put config? Blueprint vs Image
 Image because blueprint only ships for installation. No Upgrade path.
 

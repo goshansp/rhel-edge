@@ -12,14 +12,14 @@ minsize = "60 GiB"
 [[customizations.disk.partitions.logical_volumes]]
 lv_name = "rootlv"
 minsize = "30 GiB"
-fs_type = "ext4"
+fs_type = "xfs"
 mountpoint = "/"
 
 [[customizations.disk.partitions.logical_volumes]]
 lv_name = "microshiftlv"
 minsize = "30 GiB"
-fs_type = "ext4"
-mountpoint = ""
+fs_type = "xfs"
+mountpoint = "/var/microshift"
 
 # TODO: No support yet
 # [customizations.openscap]
