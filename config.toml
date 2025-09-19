@@ -11,6 +11,7 @@
 [[customizations.disk.partitions]]
 type = "lvm"
 name = "main-vg"
+minsize = "10 GiB"
 
 [[customizations.disk.partitions.logical_volumes]]
 lv_name = "root-lv"
