@@ -7,13 +7,19 @@
 [[customizations.disk.partitions]]
 type = "lvm"
 name = "mainvg"
-minsize = "30 GiB"
+minsize = "60 GiB"
 
 [[customizations.disk.partitions.logical_volumes]]
 lv_name = "rootlv"
-minsize = "20 GiB"
+minsize = "30 GiB"
 fs_type = "ext4"
 mountpoint = "/"
+
+[[customizations.disk.partitions.logical_volumes]]
+lv_name = "microshiftlv"
+minsize = "30 GiB"
+fs_type = "ext4"
+mountpoint = ""
 
 # TODO: No support yet
 # [customizations.openscap]
