@@ -51,6 +51,8 @@ $ sudo coreos-installer install /dev/nvme0n1 --image-url http://green:8000/disk.
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder_using-image-mode-for-rhel-to-build-deploy-and-manage-operating-systems
 ```
 $ ssh rhel9
+$ sudo dnf install git
+$ git clone git@github.com:goshansp/rhel-edge
 $ sudo subscription-manager register --username rh-ee-hgosteli
 $ sudo subscription-manager repos --enable rhocp-4.19-for-rhel-9-$(uname -m)-rpms --enable fast-datapath-for-rhel-9-$(uname -m)-rpms --enable gitops-1.16-for-rhel-9-$(uname -m)-rpms
 $ sudo mkdir /root/.config/; sudo mkdir /root/.config/containers; sudo vi /root/.config/containers/auth.json
