@@ -1,11 +1,21 @@
 # Reference: https://osbuild.org/docs/user-guide/blueprint-reference/
 
+# Without `develop` user, the user `hp` cannot login
 [[customizations.user]]
-name = "root"
-description = "Console Only Root"
-groups = ["wheel"]
-home = "/root"
-shell = "/bin/bash"
+name = "develop"
+description = "Dummy User for enabling sysuser creations"
+# password = "password"
+# groups = ["wheel"]
+home = "/home/develop"
+shell = "/sbin/nologin"
+
+# This user would not enable hp to login ... maybe home dir path?
+# [[customizations.user]]
+# name = "root"
+# description = "Console Only Root"
+# groups = ["wheel"]
+# home = "/root"
+# shell = "/bin/bash"
 
 [[customizations.disk.partitions]]
 type = "plain"

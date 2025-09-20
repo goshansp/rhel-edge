@@ -99,7 +99,7 @@ $ sudo podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
 # ADR
 
 ## ADR root user
-There is root user without password and without it 
+There is root user without password. It was needed because without a user sysuser would not properly comission `hp`. 
 
 ## XFS vs. EXT4
 Because happy path and scalability. Can not be shrinked.
