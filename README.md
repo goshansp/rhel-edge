@@ -37,12 +37,16 @@ $ sudo podman run \
     --config /config.toml \
   quay.io/rh_ee_hgosteli/rhel-edge:latest
 $ sudo xz -T0 -9 -k output/image/disk.raw
-$ scp rhel9:./output/image/disk.raw.xz .
+$ exit
+$ scp rhel9:./rhel-edge/output/image/disk.raw.xz .
 $ python3 -m http.server 8000
 ```
 1. Boot USB Coreos installer
 ```
-$ sudo coreos-installer install /dev/nvme0n1 --image-url http://green:8000/disk.raw.xz --insecure --resize
+# Only for re-deploy:
+$ sudo vgremove -ff root-vg
+
+$ sudo coreos-installer install /dev/nvme0n1 --image-url http://green:8000/disk.raw.xz --insecure
 ```
 
 ## Step 2a: Build Image as .qcow2 and Boot as VM
