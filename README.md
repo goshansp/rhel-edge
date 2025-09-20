@@ -3,6 +3,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # WIP
+1. Cannot login hp with ssh key if we don't create the `develop` user?
 1. Update from previous Image ...
 1. Done: Deploy to metal (ansible_role_router.git)
 1. Create and Publish Update
