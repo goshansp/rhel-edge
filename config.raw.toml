@@ -1,11 +1,10 @@
 # Reference: https://osbuild.org/docs/user-guide/blueprint-reference/
 
 [[customizations.user]]
-name = "develop"
-description = "Development User"
-password = "password"
+name = "root"
+description = "Console Only Root"
 groups = ["wheel"]
-home = "/home/develop"
+home = "/root"
 shell = "/bin/bash"
 
 [[customizations.disk.partitions]]

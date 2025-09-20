@@ -98,6 +98,9 @@ $ sudo podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
 
 # ADR
 
+## ADR root user
+There is root user without password and without it 
+
 ## XFS vs. EXT4
 Because happy path and scalability. Can not be shrinked.
 
