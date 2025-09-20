@@ -1,12 +1,12 @@
 # Reference: https://osbuild.org/docs/user-guide/blueprint-reference/
 
-[[customizations.user]]
-name = "develop"
-description = "Development User"
-password = "password"
-groups = ["wheel"]
-home = "/home/develop"
-shell = "/bin/bash"
+# [[customizations.user]]
+# name = "develop"
+# description = "Development User"
+# password = "password"
+# groups = ["wheel"]
+# home = "/home/develop"
+# shell = "/bin/bash"
 
 [[customizations.disk.partitions]]
 type = "plain"
@@ -25,10 +25,4 @@ lv_name = "microshift-lv"
 minsize = "15 GiB"
 fs_type = "xfs"
 mountpoint = "/var/microshift"
-
-# [[customizations.disk.partitions.logical_volumes]]
-# lv_name = "microshift-lv"
-# minsize = "30 GiB"
-# fs_type = "xfs"
-# mountpoint = "/var/microshift"
 

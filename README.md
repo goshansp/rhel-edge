@@ -28,7 +28,7 @@ $ sudo podman run \
     --privileged \
     --pull=newer \
     --security-opt label=type:unconfined_t \
-    -v ./config.toml:/config.toml:ro \
+    -v ./config.raw.toml:/config.toml:ro \
     -v ./output:/output \
     -v /var/lib/containers/storage:/var/lib/containers/storage \
     registry.redhat.io/rhel10/bootc-image-builder:latest \
@@ -64,7 +64,7 @@ $ sudo podman run \
     --privileged \
     --pull=newer \
     --security-opt label=type:unconfined_t \
-    -v ./config.toml:/config.toml:ro \
+    -v ./config.qcow2.toml:/config.toml:ro \
     -v ./output:/output \
     -v /var/lib/containers/storage:/var/lib/containers/storage \
     registry.redhat.io/rhel10/bootc-image-builder:latest \
