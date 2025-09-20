@@ -47,6 +47,7 @@ $ python3 -m http.server 8000
 $ sudo vgremove -ff root-vg
 
 $ sudo coreos-installer install /dev/nvme0n1 --image-url http://green:8000/disk.raw.xz --insecure
+$ sudo poweroff
 ```
 
 ## Step 2a: Build Image as .qcow2 and Boot as VM
