@@ -3,7 +3,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # WIP
-1. Raw image is 430GB uncompressed and coreos-installer uncompressing it takes forever ... how can we speed it up?
+1. Fix partition order raw/metal, so p4 is at the end ... currently creates p3 after p4 and its a pain to resize p4 100%
 1. Update from previous Image ...
 1. Done: Deploy to metal (ansible_role_router.git)
 1. Create and Publish Update
