@@ -98,7 +98,7 @@ $ sudo podman build \
   --volume /etc/rhsm:/etc/rhsm:z \
   -t quay.io/rh_ee_hgosteli/rhel-edge:latest .
 
-$ sudo podman login quay.io
+$ sudo podman login quay.io --authfile /etc/containers/auth.json
 # rh_ee_hgosteli
 $ sudo podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
 ```
