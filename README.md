@@ -39,7 +39,7 @@ $ sudo podman run \
   quay.io/rh_ee_hgosteli/rhel-edge:latest
 $ sudo xz -T0 -9 -k output/image/disk.raw
 $ exit
-$ scp rhel9:./rhel-edge/output/image/disk.raw.xz .
+$ scp rhel9:./git/rhel-edge/output/image/disk.raw.xz .
 $ python3 -m http.server 8000
 ```
 1. Boot USB Coreos installer
@@ -79,7 +79,8 @@ $ sudo podman run \
     --type qcow2 \
     --config /config.toml \
   quay.io/rh_ee_hgosteli/rhel-edge:latest
-$ scp rhel9:./rhel-edge/output/qcow2/disk.qcow2 ~/.local/molecule/images/disk.qcow2
+
+$ scp rhel9:./git/rhel-edge/output/qcow2/disk.qcow2 ~/.local/molecule/images/disk.qcow2
 
 ./fire_vm.sh
 ```

@@ -22,12 +22,12 @@ type = "plain"
 label = "root"
 mountpoint = "/"
 fs_type = "xfs"
-minsize = "100 GiB"
+minsize = "50 GiB"
 
 [[customizations.disk.partitions]]
 type = "lvm"
 name = "microshift"
-minsize = "2 GiB"
+minsize = "10 GiB"
 
 [[customizations.disk.partitions.logical_volumes]]
 lv_name = "microshift-lv"
