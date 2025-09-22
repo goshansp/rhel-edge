@@ -24,6 +24,7 @@ minsize = "20 GiB"
 
 [[customizations.disk.partitions.logical_volumes]]
 lv_name = "root"
+# enlarges to 20GB ... remove minsize?
 minsize = "10 GiB"
 fs_type = "xfs"
 mountpoint = "/"

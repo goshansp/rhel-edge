@@ -16,7 +16,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # Partitioning
-Root-LV is enlarged to fill up all RootVG ... how can we allow for Empty Space in VG? For now we keep a placeholder lv that we remove before comissioning Microshift.
+Root-LV is enlarged to fill up all RootVG 20GB ... how can we allow for Empty Space in VG? For now we keep a placeholder lv that we remove before comissioning Microshift.
 
 https://osbuild.org/docs/user-guide/partitioning/
 
