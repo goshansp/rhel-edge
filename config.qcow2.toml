@@ -18,21 +18,18 @@ shell = "/sbin/nologin"
 # shell = "/bin/bash"
 
 [[customizations.disk.partitions]]
-type = "plain"
-label = "root"
-mountpoint = "/"
-fs_type = "xfs"
-minsize = "30 GiB"
-
-[[customizations.disk.partitions]]
 type = "lvm"
-name = "microshift"
-minsize = "10 GiB"
+name = "rhel"
+minsize = "20 GiB"
 
-# Dummy Volume to allow build
 [[customizations.disk.partitions.logical_volumes]]
-lv_name = "microshift-lv"
-minsize = "1 GiB"
+lv_name = "root"
+minsize = "10 GiB"
+fs_type = "xfs"
+mountpoint = "/"
+
+[[customizations.disk.partitions.logical_volumes]]
+lv_name = "microshift-placeholder"
+minsize = "10 GiB"
 fs_type = "xfs"
 mountpoint = "/var/microshift"
-

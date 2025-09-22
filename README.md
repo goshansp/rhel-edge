@@ -3,11 +3,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # WIP
-1. Tailscale
-1. Fix partition order raw/metal, so p4 is at the end ... currently creates p3 after p4 and its a pain to resize p4 100%
-1. Update from previous Image ...
-1. Done: Deploy to metal (ansible_role_router.git)
-1. Create and Publish Update
+1. Done: Tailscale
 1. Host the image raw/qcow2 on a tailscaled/http server (pxe nginx)
 
 
@@ -19,8 +15,8 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 1. On the target `sudo bootc upgrade`
 
 
-# TODO: Partitioning
-Root is always last on the PV. This is why the VG (p4) is sector-wise before root (p3) and we cannot resize it. Can we put root on LV without consuming the entire VG?
+# Partitioning
+Root-LV is enlarged to fill up all RootVG ... how can we allow for Empty Space in VG? For now we keep a placeholder lv that we remove before comissioning Microshift.
 
 https://osbuild.org/docs/user-guide/partitioning/
 
