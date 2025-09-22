@@ -19,6 +19,12 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 1. On the target `sudo bootc upgrade`
 
 
+# TODO: Partitioning
+Root is always last on the PV. This is why the VG (p4) is sector-wise before root (p3) and we cannot resize it. Can we put root on LV without consuming the entire VG?
+
+https://osbuild.org/docs/user-guide/partitioning/
+
+
 # Initial Image Creation and Deployment Process
 
 ## Step 2b: Create .raw.xz Image Deploy to Metal
@@ -107,17 +113,13 @@ $ sudo podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
 # ADR
 
 ## ADR root user
-There is root user without password. It was needed because without a user sysuser would not properly comission `hp`. 
+There is a `develop` user without password. It was needed because without a user sysuser would not properly comission `hp`.
 
 ## XFS vs. EXT4
 Because happy path and scalability. Can not be shrinked.
 
-
 ## Where to put config? Blueprint vs Image
 Image because blueprint only ships for installation. No Upgrade path.
-
-## No secrets in image
-Nobrainer.
 
 ## Rebase Ostree-Container
 Ostree Commit and Containers seem not to allow for upgrade path as of 12.09.2025 - hence we redeploy.
