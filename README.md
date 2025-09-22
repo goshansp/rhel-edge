@@ -3,6 +3,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # WIP
+1. Tailscale
 1. Fix partition order raw/metal, so p4 is at the end ... currently creates p3 after p4 and its a pain to resize p4 100%
 1. Update from previous Image ...
 1. Done: Deploy to metal (ansible_role_router.git)
@@ -58,6 +59,7 @@ $ sudo dnf install git
 $ git clone git@github.com:goshansp/rhel-edge
 $ sudo subscription-manager register --username rh-ee-hgosteli
 $ sudo subscription-manager repos --enable rhocp-4.19-for-rhel-9-$(uname -m)-rpms --enable fast-datapath-for-rhel-9-$(uname -m)-rpms --enable gitops-1.16-for-rhel-9-$(uname -m)-rpms
+$ sudo dnf config-manager --add-repo https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 $ sudo mkdir /root/.config/; sudo mkdir /root/.config/containers; sudo vi /root/.config/containers/auth.json
 $ sudo podman login registry.redhat.io
 $ sudo podman login quay.io
