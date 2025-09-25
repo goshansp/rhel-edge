@@ -20,12 +20,12 @@ shell = "/sbin/nologin"
 [[customizations.disk.partitions]]
 type = "lvm"
 name = "rhel"
-minsize = "20 GiB"
+minsize = "30 GiB"
 
 [[customizations.disk.partitions.logical_volumes]]
 lv_name = "root"
-# enlarges to 20GB ... remove minsize?
-minsize = "10 GiB"
+# auto enlarges to 30GB ... remove minsize?
+# minsize = "10 GiB"
 fs_type = "xfs"
 mountpoint = "/"
 

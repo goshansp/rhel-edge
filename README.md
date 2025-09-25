@@ -4,6 +4,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 # WIP
 1. Done: Tailscale
+1. Error: Failed to download metadata for repo 'tailscale-stable': repomd.xml GPG signature verification error: Bad GPG signature
 1. Host the image raw/qcow2 on a tailscaled/http server (pxe nginx)
 
 
