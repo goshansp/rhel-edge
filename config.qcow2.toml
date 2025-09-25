@@ -9,6 +9,9 @@ description = "Dummy User for enabling sysuser creations"
 home = "/home/develop"
 shell = "/sbin/nologin"
 
+# TODO: Add 
+# ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMH5Rhp5ttT2f/CpTkkKik1a/cOR6ias6FcEcniWfOKFDoGrDjOaml+SkpLhzCLy2M8Yl0Ft1vIQBo8YnQKuUm4= gitlab-runner@green.pamperspoil.com
+
 # This user would not enable hp to login ... maybe home dir path?
 # [[customizations.user]]
 # name = "root"
