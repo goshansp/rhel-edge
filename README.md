@@ -3,6 +3,7 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # WIP
+1. add gitlab-runner user and ssh key to config.qcow2.toml
 1. Centralize the QCOW2 Image
 1. Done: Tailscale
 1. Error: Failed to download metadata for repo 'tailscale-stable': repomd.xml GPG signature verification error: Bad GPG signature
@@ -10,7 +11,12 @@ How to build RHEL9 Edge with Microshift to push to Quay. Build Env is RHEL9 (see
 
 
 # WIP: QCOW Image Hosting
-Once e `qcow2` image is built we'll push it to an Nginx server. Molecule will get it from there and create a vm there of from the latest image. This will enable Green, T14s, Gitlab-Runner to always run on latest.
+Once e `qcow2` image is built we'll push it to an Nginx server. Molecule will get it from there and create a vm there of from the latest image. This will enable Green, T14s, Gitlab-Runner to always run on latest. We want Gitlab-Runner to build daily and build with every git push and the move it to nginx.
+1. Deploy ansible_role_pxe / Nginx (On Router)
+1. Push current QCOW to Nginx
+1. Point Molecule Create to get image
+1. Implement .gitlabci to create image and push
+1. Implement Molecule check for image version and update to latest? (Virsh Undefine)
 
 
 # Upgrade Process
