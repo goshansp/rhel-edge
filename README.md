@@ -109,6 +109,7 @@ $ scp rhel9:./git/rhel-edge/output/qcow2/disk.qcow2 ~/.local/molecule/images/dis
 ## Step 1: Creating Bootc RHEL Edge Image (On RHEL9)
 ```
 $ sudo dnf install podman
+$ sudo dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/9/tailscale.repo
 # https://access.redhat.com/terms-based-registry/token/hgosteli/docker-config ... auth.json
 $ mkdir ~/.config/; mkdir ~/.config/containers; vi ~/.config/containers/auth.json
 $ podman login registry.redhat.io
@@ -119,21 +120,21 @@ $ sudo podman build \
   --volume /etc/rhsm:/etc/rhsm:z \
   -t quay.io/rh_ee_hgosteli/rhel-edge:latest .
 
-$ sudo podman login quay.io --authfile /etc/containers/auth.json
+$ sudo podman login quay.io --authfile /etc/containers/auth.json # only works on t14s ... omit authfile for other login. TODO
 # rh_ee_hgosteli
 $ sudo podman push quay.io/rh_ee_hgosteli/rhel-edge:latest
 ```
 
 # ADR
 
-## ADR root user
+## ADR develop user
 There is a `develop` user without password. It was needed because without a user sysuser would not properly comission `hp`.
 
 ## XFS vs. EXT4
-Because happy path and scalability. Can not be shrinked.
+Chose XFS. Because GPT says its happy path and scalability. Can not be shrinked.
 
 ## Where to put config? Blueprint vs Image
-Image because blueprint only ships for installation. No Upgrade path.
+As much config as possible needs to go into the image because blueprint only ships for installation. No Upgrade path for blueprint config besides redeployment.
 
 ## Rebase Ostree-Container
 Ostree Commit and Containers seem not to allow for upgrade path as of 12.09.2025 - hence we redeploy.
