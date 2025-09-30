@@ -39,6 +39,7 @@ https://osbuild.org/docs/user-guide/partitioning/
 ## Step 3: Expose Image to Http
 1. hp@green:~/images$ scp rhel9:./rhel-edge/output/qcow2/disk.qcow2 .
 1. $ python -m http.server -d ~/images 8085
+1. run molecule xyz -s rhel-edge
 
 
 ## Step 2b: Create .raw.xz Image Deploy to Metal
