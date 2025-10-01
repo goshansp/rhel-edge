@@ -102,6 +102,10 @@ $ sudo podman run \
   quay.io/rh_ee_hgosteli/rhel-edge:latest
 
 $ scp rhel9:./git/rhel-edge/output/qcow2/disk.qcow2 ~/.local/molecule/images/disk.qcow2
+$ scp ~/.local/molecule/images/disk.qcow2 rpi05:/.
+$ ssh rpi05
+$ sudo mv disk.qcow2 /home/minion/.local/share/containers/storage/volumes/nginx-data/_data/images/.
+$ sudo chown minion:minion /home/minion/.local/share/containers/storage/volumes/nginx-data/_data/images/disk.qcow2
 
 ./fire_vm.sh
 ```

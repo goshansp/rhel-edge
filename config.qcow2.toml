@@ -1,6 +1,9 @@
 # Reference: https://osbuild.org/docs/user-guide/blueprint-reference/
 
 # Without `develop` user, the user `hp` cannot login
+[[customizations.group]]
+name = "develop"
+gid = 1002
 [[customizations.user]]
 name = "develop"
 description = "Dummy User for enabling sysuser creations"
@@ -8,7 +11,12 @@ description = "Dummy User for enabling sysuser creations"
 # groups = ["wheel"]
 home = "/home/develop"
 shell = "/sbin/nologin"
+uid = 1002
+gid = 1002
 
+[[customizations.group]]
+name = "gitlab-runner"
+gid = 1003
 [[customizations.user]]
 name = "gitlab-runner"
 description = "Pipeline Runner"
@@ -16,8 +24,8 @@ key = "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBB
 groups = ["wheel"]
 home = "/home/gitlab-runner/"
 shell = "/bin/bash"
-uid = 981
-gid = 981
+uid = 1003
+gid = 1003
 
 [[customizations.files]]
 path = "/etc/sudoers.d/90-gitlab-runner"
