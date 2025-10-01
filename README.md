@@ -35,9 +35,14 @@ https://osbuild.org/docs/user-guide/partitioning/
 # Initial Image Creation and Deployment Process
 
 ## Step 3: Expose Image to Http
-1. hp@green:~/images$ scp rhel9:./rhel-edge/output/qcow2/disk.qcow2 .
-1. $ python -m http.server -d ~/images 8085
-1. run molecule xyz -s rhel-edge
+```
+# TODO: Below kills running molecule vms ...
+scp rhel9:./git/rhel-edge/output/qcow2/disk.qcow2 ~/.local/molecule/images/disk.qcow2
+scp ~/.local/molecule/images/disk.qcow2 rpi05:.
+ssh rpi05
+sudo mv disk.qcow2 /home/minion/.local/share/containers/storage/volumes/nginx-data/_data/images/.
+sudo chown minion:minion /home/minion/.local/share/containers/storage/volumes/nginx-data/_data/images/disk.qcow2
+```
 
 
 ## Step 2b: Create .raw.xz Image Deploy to Metal
@@ -98,12 +103,6 @@ $ sudo podman run \
     --type qcow2 \
     --config /config.toml \
   quay.io/rh_ee_hgosteli/rhel-edge:latest
-
-$ scp rhel9:./git/rhel-edge/output/qcow2/disk.qcow2 ~/.local/molecule/images/disk.qcow2
-$ scp ~/.local/molecule/images/disk.qcow2 rpi05:/.
-$ ssh rpi05
-$ sudo mv disk.qcow2 /home/minion/.local/share/containers/storage/volumes/nginx-data/_data/images/.
-$ sudo chown minion:minion /home/minion/.local/share/containers/storage/volumes/nginx-data/_data/images/disk.qcow2
 
 ./fire_vm.sh
 ```
